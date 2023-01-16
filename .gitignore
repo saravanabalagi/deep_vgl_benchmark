@@ -3,10 +3,13 @@ __pycache__
 logs
 test
 data
+data_formatted
+downloads
 
 # IDEs generated folders
 .spyproject
 venv/
+.venv
 .idea/
 __MACOSX/
 **/.DS_Store
@@ -14,3 +17,7 @@ __MACOSX/
 # other
 pretrained
 *.pth
+
+# scripts
+run*.sh
+batch*.sh

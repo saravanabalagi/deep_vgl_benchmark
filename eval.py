@@ -67,7 +67,7 @@ if args.off_the_shelf.startswith("radenovic") or args.off_the_shelf.startswith("
     if args.off_the_shelf.startswith("radenovic"):
         pretrain_dataset_name = args.off_the_shelf.split("_")[1]  # sfm or gldv1 datasets
         url = OFF_THE_SHELF_RADENOVIC[f"{args.backbone}_{pretrain_dataset_name}"]
-        state_dict = load_url(url, model_dir=join("data", "off_the_shelf_nets"))
+        state_dict = load_url(url, model_dir=join("downloads", "off_the_shelf_nets"))
     else:
         # This is a hacky workaround to maintain compatibility
         sys.modules['sklearn.decomposition.pca'] = sklearn.decomposition._pca
@@ -79,7 +79,7 @@ if args.off_the_shelf.startswith("radenovic") or args.off_the_shelf.startswith("
             state_dict_filename = "Resnet50-AP-GeM.pt"
         elif args.backbone == "resnet101conv5":
             state_dict_filename = "Resnet-101-AP-GeM.pt"
-        state_dict = torch.load(join("data", "off_the_shelf_nets", state_dict_filename))
+        state_dict = torch.load(join("downloads", "off_the_shelf_nets", state_dict_filename))
     state_dict = state_dict["state_dict"]
     model_keys = model.state_dict().keys()
     renamed_state_dict = {k: v for k, v in zip(model_keys, state_dict.values())}
